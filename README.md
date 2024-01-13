@@ -1,5 +1,5 @@
 # MLIB-Scala-Airflow_Spark
-# Apache Airflow  with Java, Scala, and Python Spark Jobs
+# Apache Airflow  with Scala, and Python(Mlib)  Spark Jobs
 
 This project orchestrates Spark jobs written in different programming languages using Apache Airflow, all within a Dockerized environment. The DAG `sparking_flow` is designed to submit Spark jobs written in Python and Scala, ensuring that data processing is handled efficiently and reliably on a daily schedule.
 
