@@ -1,15 +1,16 @@
 # MLIB-Scala-Airflow_Spark
 # Apache Airflow on Steroids with Java, Scala, and Python Spark Jobs
 
-This project orchestrates Spark jobs written in different programming languages using Apache Airflow, all within a Dockerized environment. The DAG `sparking_flow` is designed to submit Spark jobs written in Python, and Scala, ensuring that data processing is handled efficiently and reliably on a daily schedule.
+This project orchestrates Spark jobs written in different programming languages using Apache Airflow, all within a Dockerized environment. The DAG `sparking_flow` is designed to submit Spark jobs written in Python and Scala, ensuring that data processing is handled efficiently and reliably on a daily schedule.
 
 ## Project Structure
 
 The DAG `sparking_flow` includes the following tasks:
 
 - **start:** A PythonOperator that prints "Jobs started".
-- **python_job:** A SparkSubmitOperator that submits a Python Spark job.
+- **python_job:** A SparkSubmitOperator that load data into RDBMS.
 - **scala_job:** A SparkSubmitOperator that submits a Scala Spark job.
+- **ml_job:** A PythonOperator that performs Linear regression.
 - **end:** A PythonOperator that prints "Jobs completed successfully".
 
 These tasks are executed in a sequence where the start task triggers the Spark jobs in parallel, and upon their completion, the end task is executed.
@@ -55,7 +56,9 @@ The DAG will execute the following steps:
 1. Print "Jobs started" in the Airflow logs.
 2. Submit the Python Spark job to the Spark cluster.
 3. Submit the Scala Spark job to the Spark cluster.
-4. Print "Jobs completed successfully" in the Airflow logs after all jobs have finished.
+4. Submit the ML_job to spark cluster
+5. Print "Jobs completed successfully" in the Airflow logs after all jobs have finished.
 
 **Note:** You must add the Spark cluster URL to the Spark connection in the configuration on the Airflow UI.
 
+Additionally, this project uses MLlib Spark Submit Operator for linear regression.
